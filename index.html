@@ -1,41 +1,112 @@
 <!DOCTYPE html>
-<html>
- <head>
-    <script src="phaser.js"></script>
- </head>
- <body>
-   <script>
-     class SplashScreen extends Phaser.Scene{
-       constructor(){
-         super("splash");
-       }
-
-       preload(){
-         this.load.image("hawk", "hawk.jpg")
-       }//preload
-
-       create(){
-          const hawk = this.add.image(0, 0, "hawk");
-       }//create
-
-     }//splashscreen
-
-     // main.js
-     const config = {
-     type: Phaser.AUTO,
-     width: 500,
-     height: 500,
-     physics: {
-    default: 'arcade',
-    arcade: {
-      gravity: {y: 200}
-    }
-  },
-  scene : [SplashScreen]
-};
-
-new Phaser.Game(config);
-
-</script>
- </body>
+<html lang="en">
+<head>
+    <title>Snakes, Ladders and Numbers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/game.css" rel="stylesheet">
+    <script type="module" defer src="js/globals.js"></script>
+    <script type="module" defer src="js/game.js"></script>
+    <script type="module" defer src="js/main.js"></script>
+</head>
+<body>
+    <!-- MENU -->
+    <div class="menu">
+        <button id="upgrade">Panic Mode</button><button id="play">Play</button>
+        <button id="resume">Resume</button>
+        <button id="high-score">High Score</button>		<button id="help">Help</button>
+    </div>
+    <!-- GAME BOARD -->
+    <div class="z-order">
+        <div class="top-container">
+            <div class="flex-item-score">
+                SCORE: 0
+            </div>
+            <div>
+                <img class="confirm" src="" alt="">
+            </div>
+            <div class="flex-item-time">
+            </div>
+        </div>
+        <div class="board-container">
+            <img id="board" class="top" src="images/board1.png" alt="game board">
+            <div class="player"></div>
+        </div>
+        <button id="gen">Generate</button>
+        <span id="exp"><strong>0 + 0</strong></span><!--<span id="counter">5</span>-->
+    </div>
+    <!-- SPLASH AND DIALOGUE -->
+    <div class="intro-bg">
+        <div class="splash"></div>
+    </div>
+    <div class="dialog">
+        <div class="mode-title">
+            Choose level of difficulty
+        </div>
+        <span id="easy">Easy</span>
+        <span id="hard">Hard</span>
+    </div>
+    <!-- GAME START -->
+    <div class="gameStart"></div>
+    <!-- ROUND END -->
+    <div class="completed">
+        Round Completed
+    </div>
+    <!-- GAME OVER -->
+    <img class="game-over" src="images/gameover.png" class="game-over" alt="game over image">
+    <audio id="game_sound">
+        <source src="sounds/app_src_main_res_raw_intro.mp3" type="audio/mpeg"></audio>
+    <!-- SCORE RESULTS -->
+    <div class="score-sheet">
+        <span id="score-label">Precision</span>
+        <span id="score-amount">1000000</span>
+        <span id="time-label">Time Bonus</span>
+        <span id="time-bonus">10000</span>
+        <span id="final-scorelabel">Final Score</span>
+        <span id="final-score">1000000</span>
+        <button id="register">Register your score!</button><button id="close">Close</button>
+    </div>
+    <!-- HIGH SCORES  -->
+    <div class="score-screen-container">
+        <div class="score-screen"	>
+            <div id="high-scores-title">
+                HIGH SCORES
+            </div>
+            <span id="pos-one"></span>
+            <span id="pos-one-score"></span>
+            <span id="pos-two"></span>
+            <span id="pos-two-score"></span>
+            <span id="pos-three"></span>
+            <span id="pos-three-score"></span>
+            <span id="pos-four"></span>
+            <span id="pos-four-score"></span>
+            <span id="pos-five"></span>
+            <span id="pos-five-score"></span>
+            <button id="close-scores"><span>Back</span></button>
+        </div>
+    </div>
+    <!-- REGISTER -->
+    <div class="initials">
+        <div class="form-container">
+            <div class="form-label">
+                <label id="userNameLabel" for="username">Enter your username</label>
+            </div>
+            <input type="text" id="username" name="username" placeholder="username"	>
+            <button id="submitUserName" >Finnish</button>	<span id="error"></span>
+        </div>
+    </div>
+    <!-- HELP -->
+    <div class="help-container">
+        <div class="help">
+            <p>
+                <span id="title1">The Menu Screen</span><br>1. To start new game  press Play on the menu screen.<br>2. To play previously saved game, press Resume on menu screen.<br>3. To view high scores, press High Scores button on the menu screen.<br>4. To get help, press Help on the menu screen.<br><span id="notice" style="hsla(360, 100%, 50%, 1.0);">Note! The game uses cookies to store game state.</span><br> <span id="title2">Choosing Modes</span><br>Change the game difficulty level by pressing  easy or hard mode button on  title screen.<br><span id="title3">Game Board</span><br>1. To move the player sprite, you first generate an arithmetic expression by pressing the Generate button.<br>2. The resulting expression will tell you by how many squares to move forward or backward.<br>3. Positive means moves forward and negative means move backward.<br>4. Click on the square you have chosen on the game board.<br>5. The game ends when the timer reaches 0 or you have reached the the square numbered 100.<br>6. If your total score is high enough, you can enter your username or any name to be displayed on the high scores screen.
+            </p>
+            <button id="close-help">Back</button>
+        </div>
+    </div>
+    <div class="congrats">
+        CONGRATULATIONS!<br>
+        YOU ARE THE SUPREME CHAMPION
+    </div>
+</body>
 </html>
