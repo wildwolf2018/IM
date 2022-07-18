@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <script src="phaser.js"></script>
+ </head>
+ <body>
+   <script>
+     class SplashScreen extends Phaser.Scene{
+       constructor(){
+         super("splash");
+       }
+
+       preload(){
+         this.load.image("hawk", "C:/Users/InterCafe2/Desktop/Test/hawk.jpg")
+       }//preload
+
+       create(){
+          const hawk = this.add.image(0, 0, "hawk");
+       }//create
+
+     }//splashscreen
+
+     // main.js
+     const config = {
+     type: Phaser.AUTO,
+     width: 500,
+     height: 500,
+     physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: {y: 200}
+    }
+  },
+  scene : [SplashScreen]
+};
+
+new Phaser.Game(config);
+
+</script>
+ </body>
+</html>
